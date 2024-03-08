@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abalone Age Prediction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            background-image: url('https://images.pexels.com/photos/3123900/pexels-photo-3123900.jpeg?auto=compress&cs=tinysrgb&w=600');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            height: 80%;
+            padding: 0; /* Remove padding to ensure the content fits without scrollbar */
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+          
+        }
+        .header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input,
+        .form-group select {
+            width: calc(100% - 10px);
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .submit {
+            text-align: center;
+        }
+        .submit button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Abalone Age Prediction</div>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="sex">Sex:</label>
+                <select name="sex" required>
+                    <option value="" disabled selected>Select sex</option>
+                    <option value="0">FEMALE</option>
+                    <option value="1">INFANT</option>
+                    <option value="2">MALE</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="length">Length:</label>
+                <input type="text" name="length" pattern="\d+\.\d{3,}" required placeholder="Enter Length">
+            </div>
+            <div class="form-group">
+                <label for="diameter">Diameter:</label>
+                <input type="text" name="diameter" pattern="\d+\.\d{3,}" required placeholder="Enter Diameter">
+            </div>
+            <div class="form-group">
+                <label for="height">Height:</label>
+                <input type="text" name="height" pattern="\d+\.\d{3,}" required placeholder="Enter Height">
+            </div>
+            <div class="form-group">
+                <label for="wholeWeight">Whole Weight:</label>
+                <input type="text" name="wholeWeight" pattern="\d+\.\d{3,}" required placeholder="Enter Whole Weight">
+            </div>
+            <div class="form-group">
+                <label for="shuckedWeight">Shucked Weight:</label>
+                <input type="text" name="shuckedWeight" pattern="\d+\.\d{3,}" required placeholder="Enter Shucked Weight">
+            </div>
+            <div class="form-group">
+                <label for="visceraWeight">Viscera Weight:</label>
+                <input type="text" name="visceraWeight" pattern="\d+\.\d{3,}" required placeholder="Enter Viscera Weight">
+            </div>
+            <div class="form-group">
+                <label for="shellWeight">Shell Weight:</label>
+                <input type="text" name="shellWeight" pattern="\d+\.\d{3,}" required placeholder="Enter Shell Weight">
+            </div>
+            <div class="submit">
+                <button type="submit">Predict Age</button>
+            </div>
+        </form>
+        <div id="prediction-text">
+            {% if prediction_text %}
+            <p>{{ prediction_text }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!-- result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+<style>
+    body{
+        background-color: black;
+    }
+    .main-con{
+        background-color: aqua;
+        height: 250px;
+        width: 250px;
+        margin-top: 10%;
+    }
+    .sub-con{
+        background-color: rgb(0, 0, 0);
+        height: 240px;
+        width: 240px;
+        margin-top: -34%;
+    }
+    .txt{
+        padding-top: 75px;
+        color: rgb(249, 6, 6);
+        font-weight: bolder;
+    }
+    .txt2{
+        padding-top: 50px;
+    }
+</style>
+</head>
+<body>
+<center><div class="main-con" >
+    <div class="txt" id="prediction-text">
+        <div class="sub-con">
+        {% if prediction_text %}
+            <p class="txt2">{{ prediction_text }}</p>
+        {% endif %}
+    </div>
+</div>
+</div></center>
+</body>
+</html>
